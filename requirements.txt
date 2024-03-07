@@ -6,6 +6,6 @@ langchain
 chromadb
 faiss-cpu
 
-sqlite3
+
 streamlit_lottie
 pandas
