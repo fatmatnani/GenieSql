@@ -4,6 +4,15 @@ from streamlit_lottie import st_lottie
 import pandas as pd
 from custom_sql_database import CustomSQLDatabase
 
+# Import necessary LangChain libraries
+from langchain_community.utilities import SQLDatabase
+from langchain_core.prompts import PromptTemplate
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_experimental.sql.base import SQLDatabaseChain
+from langchain_core.output_parsers import StrOutputParser
+from langchain.chains import LLMChain
+from langchain.memory import ConversationBufferMemory
+
 
 # manajando la base de datos
 import sqlite3
@@ -20,14 +29,7 @@ city = ['ID,', 'Name,', 'CountryCode,', 'District,', 'Population']
 country = ['Code,', 'Name,', 'Continent,', 'Region,', 'SurfaceArea,', 'IndepYear,', 'Population,', 'LifeExpectancy,', 'GNP,', 'GNPOld,', 'LocalName,', 'GovernmentForm,', 'HeadOfState,', 'Capital,', 'Code2']
 countrylanguage = ['CountryCode,', 'Language,', 'IsOfficial,', 'Percentage']
 
-# Import necessary LangChain libraries
-from langchain_community.utilities import SQLDatabase
-from langchain_core.prompts import PromptTemplate
-from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_experimental.sql.base import SQLDatabaseChain
-from langchain_core.output_parsers import StrOutputParser
-from langchain.chains import LLMChain
-from langchain.memory import ConversationBufferMemory
+
 
 def create_conversational_chain(db_path, gemini_api_key):
     # Get the instance of LLM
